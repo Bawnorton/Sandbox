@@ -1,4 +1,4 @@
-package moonfather.lilypads.integration;
+package moonfather.lilypads.mixin.integration;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -6,18 +6,21 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.orcinus.goodending.blocks.LargeLilyPadBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Pseudo
-@Mixin(targets = "net.orcinus.goodending.blocks.LargeLilyPadBlock")
-public class GoodEndingMixin3 extends GoodEndingMixin2
-{
+@Mixin(LargeLilyPadBlock.class)
+public abstract class LargeLilyPadBlockMixin2 extends AbstractBlockMixin {
     @Override
     public void changeCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir)
     {
         cir.setReturnValue(SHAPE);
     }
+
+    @Unique
     private static final VoxelShape SHAPE = Block.createCuboidShape(1, 15, 1, 15, 16, 15);
 }

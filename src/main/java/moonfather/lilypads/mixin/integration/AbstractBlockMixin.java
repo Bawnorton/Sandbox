@@ -1,5 +1,6 @@
-package moonfather.lilypads.integration;
+package moonfather.lilypads.mixin.integration;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.util.math.BlockPos;
@@ -10,9 +11,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(targets = "net.minecraft.block.AbstractBlock")
-public class GoodEndingMixin2
+@Mixin(AbstractBlock.class)
+public abstract class AbstractBlockMixin
 {
+    @SuppressWarnings("CancellableInjectionUsage")
     @Inject(at = @At("HEAD"), method = "getCollisionShape", cancellable = true)
     public void changeCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir)
     {

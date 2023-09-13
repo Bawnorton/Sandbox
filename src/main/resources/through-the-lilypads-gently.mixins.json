@@ -3,7 +3,10 @@
 	"package": "moonfather.lilypads.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"BlockMixin"
+		"BlockMixin",
+		"integration.LargeLilyPadBlockMixin",
+		"integration.AbstractBlockMixin",
+		"integration.LargeLilyPadBlockMixin2"
 	],
 	"injectors": {
 		"defaultRequire": 1
